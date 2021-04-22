@@ -1,0 +1,24 @@
+.navbar {
+  width: 100vw;
+  background: black;
+  .list {
+    display: flex;
+    justify-content: center;
+    .item {
+      //padding: 3rem;
+      .link {
+        display: block;
+        padding: 2rem;
+        font-size: 2rem;
+        color: yellow;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: all 0.3s;
+        &:hover {
+          background: yellow;
+          color: black;
+        }
+      }
+    }
+  }
+}
