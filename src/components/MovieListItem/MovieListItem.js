@@ -2,6 +2,16 @@ import React from 'react';
 import { baseImgUrl } from '../../utils/baseImgUrl';
 import styles from './MovieListItem.module.scss';
 
+const limitOverview = (str, limit) => {
+  if (str.length > limit) {
+    const newLength = str
+      .split(' ')
+      .reduce((acc, cur) => (acc < limit ? (acc += cur.length) : acc), 0);
+    return str.slice(0, newLength).concat(' ...');
+  }
+  return str;
+};
+
 const MovieListItem = ({
   id,
   title,
@@ -12,6 +22,7 @@ const MovieListItem = ({
   overview,
 }) => {
   const year = release_date.slice(0, 4);
+
   return (
     <li className={styles.movie} key={id}>
       <div className={styles.left}>
@@ -29,8 +40,11 @@ const MovieListItem = ({
             className={styles.rate}
           >{`${vote_average} / ${vote_count}`}</span>
         </div>
-        <span className={styles.overview}>{overview}</span>
-        <a className={styles.more} href="">
+        <span className={styles.overview}>{limitOverview(overview, 280)}</span>
+        <a
+          className={styles.more}
+          href={`https://www.themoviedb.org/movie/${id}`}
+        >
           Read more
         </a>
         <button className={styles.btn}>add to fav</button>
