@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import MovieList from '../components/MovieList/MovieList';
 import Router from '../routing/Router';
 
 class Root extends Component {

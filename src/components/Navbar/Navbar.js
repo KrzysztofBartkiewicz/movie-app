@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { routes } from '../../routes';
 import styles from './Navbar.module.scss';
 
@@ -8,15 +8,44 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <Link className={styles.link} to={routes.movies}>
-            Movies
-          </Link>
+          <NavLink
+            className={styles.link}
+            activeClassName={styles.active}
+            to={routes.home}
+            exact
+          >
+            Home
+          </NavLink>
         </li>
-
         <li className={styles.item}>
-          <Link className={styles.link} to={routes.favMovies}>
+          <NavLink
+            className={styles.link}
+            activeClassName={styles.active}
+            to={routes.movies}
+            exact
+          >
+            Movies
+          </NavLink>
+        </li>
+        <li className={styles.item}>
+          <NavLink
+            className={styles.link}
+            activeClassName={styles.active}
+            to={routes.blog}
+            exact
+          >
+            Blog
+          </NavLink>
+        </li>
+        <li className={styles.item}>
+          <NavLink
+            className={styles.link}
+            activeClassName={styles.active}
+            to={routes.favMovies}
+            exact
+          >
             Fav Movies
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>

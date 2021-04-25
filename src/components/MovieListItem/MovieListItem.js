@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { baseImgUrl } from '../../utils/baseImgUrl';
 import styles from './MovieListItem.module.scss';
 
@@ -20,11 +21,12 @@ const MovieListItem = ({
   vote_average,
   vote_count,
   overview,
+  movie,
 }) => {
   const year = release_date.slice(0, 4);
 
   return (
-    <li className={styles.movie} key={id}>
+    <li className={styles.movie}>
       <div className={styles.left}>
         <img
           className={styles.image}
@@ -41,12 +43,23 @@ const MovieListItem = ({
           >{`${vote_average} / ${vote_count}`}</span>
         </div>
         <span className={styles.overview}>{limitOverview(overview, 280)}</span>
-        <a
+        <Link
+          to={{
+            pathname: `/movie/${title.replace(/\s/g, '')}`,
+            state: {
+              ...movie,
+            },
+          }}
+          className={styles.more}
+        >
+          Read more
+        </Link>
+        {/* <a
           className={styles.more}
           href={`https://www.themoviedb.org/movie/${id}`}
         >
           Read more
-        </a>
+        </a> */}
         <button className={styles.btn}>add to fav</button>
       </div>
     </li>

@@ -5,9 +5,11 @@ import styles from './MovieList.module.scss';
 const MovieList = ({ movies }) => {
   return (
     <ul className={styles.list}>
-      {movies.map((movie) => {
-        return <MovieListItem {...movie} />;
-      })}
+      {movies.map((movie) => (
+        <li key={movie.id} className={styles.movie}>
+          <MovieListItem {...movie} movie={movie} />
+        </li>
+      ))}
     </ul>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Views.module.scss';
+import styles from './sass/Views.module.scss';
 
 const FavMovies = () => {
   return (
