@@ -1,52 +1,30 @@
-.movie {
+.movieCard {
+  max-width: 30rem;
+  margin: 1rem;
+  color: var(--color-black);
+  text-align: center;
+}
+
+.movieImage {
+  border-radius: 3rem;
+  box-shadow: 0px 7px 15px -2px rgba(0, 0, 0, 0.75);
+}
+
+.movieTitle {
+  margin-top: 3.2rem;
+  margin-bottom: 0.9rem;
+  font-size: 3.2rem;
+  font-weight: 600;
+}
+
+.rateWrapper {
   display: flex;
-  border-radius: 1rem;
-  max-width: 90rem;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  .left {
-    .image {
-      height: 100%;
-    }
-  }
-  .right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
-    font-size: 2rem;
-    background-color: black;
-    color: white;
-    .title {
-      font-size: 3rem;
-    }
-    .details {
-      .year {
-        margin-right: 4rem;
-      }
-    }
-    .overview {
-      margin-bottom: 0rem;
-      font-size: 1.3rem;
-    }
-    .more {
-      font-size: 1.3rem;
-      color: yellow;
-    }
-    .btn {
-      align-self: flex-start;
-      padding: 1rem 2rem;
-      border: 2px solid yellow;
-      border-radius: 0.5rem;
-      background: none;
-      color: yellow;
-      font-size: 1.4rem;
-      text-transform: uppercase;
-      transition: all 0.3s;
-      &:hover {
-        background: yellow;
-        color: black;
-      }
-    }
-  }
+  align-items: center;
+  justify-content: center;
+}
+
+.votes {
+  margin-left: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: 500;
 }

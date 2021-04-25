@@ -14,53 +14,34 @@ const limitOverview = (str, limit) => {
 };
 
 const MovieListItem = ({
-  id,
   title,
   poster_path,
   release_date,
   vote_average,
-  vote_count,
-  overview,
   movie,
 }) => {
   const year = release_date.slice(0, 4);
 
   return (
-    <li className={styles.movie}>
-      <div className={styles.left}>
+    <li className={styles.movieCard}>
+      <Link
+        to={{
+          pathname: `/movie/${title.replace(/\s/g, '')}`,
+          state: {
+            ...movie,
+          },
+        }}
+      >
         <img
-          className={styles.image}
+          className={styles.movieImage}
           src={`${baseImgUrl}${poster_path}`}
           alt={title}
         />
-      </div>
-      <div className={styles.right}>
-        <h3 className={styles.title}>{title}</h3>
-        <div className={styles.details}>
-          <span className={styles.year}>{year}</span>
-          <span
-            className={styles.rate}
-          >{`${vote_average} / ${vote_count}`}</span>
-        </div>
-        <span className={styles.overview}>{limitOverview(overview, 280)}</span>
-        <Link
-          to={{
-            pathname: `/movie/${title.replace(/\s/g, '')}`,
-            state: {
-              ...movie,
-            },
-          }}
-          className={styles.more}
-        >
-          Read more
-        </Link>
-        {/* <a
-          className={styles.more}
-          href={`https://www.themoviedb.org/movie/${id}`}
-        >
-          Read more
-        </a> */}
-        <button className={styles.btn}>add to fav</button>
+      </Link>
+      <h3 className={styles.movieTitle}>{title}</h3>
+      <div className={styles.rateWrapper}>
+        <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" />
+        <span className={styles.votes}>{vote_average}</span>
       </div>
     </li>
   );
