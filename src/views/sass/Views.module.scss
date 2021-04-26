@@ -58,22 +58,24 @@
   }
 }
 
+.duration {
+  margin-right: 4rem;
+}
+
 .votesTotal {
   font-size: 1.2rem;
 }
 
 .genresList {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 4rem;
   font-size: 1.6rem;
   font-weight: 500;
 }
 
 .genreItem {
-  padding: 0.9rem 2rem;
   margin-right: 2rem;
-  border: 1px solid var(--color-grey-2);
-  border-radius: 2rem;
 }
 
 .overviewWrapper {

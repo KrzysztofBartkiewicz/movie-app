@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { baseImgUrlw500, baseImgUrlw200 } from '../utils/baseImgUrl';
+import GenreBtn from '../components/GenreBtn/GenreBtn';
+import FavBtn from '../components/FavBtn/FavBtn';
 import styles from './sass/Views.module.scss';
-
-// "adult": false,
-// "gender": 2,
-// "id": 35742,
-// "known_for_department": "Acting",
-// "name": "Shah Rukh Khan",
-// "original_name": "Shah Rukh Khan",
-// "popularity": 7.926,
-// "profile_path": "/iAr3NRkU9KuPX7jI9ePPeq7zVsc.jpg",
-// "cast_id": 1,
-// "character": "Raj Malhotra",
-// "credit_id": "52fe47d69251416c750a71a1",
-// "order": 0
 
 const SingleMovie = ({ location }) => {
   const { id } = location.state;
@@ -84,13 +73,14 @@ const SingleMovie = ({ location }) => {
             </div>
 
             <span className={styles.duration}>{`${runtime} min.`}</span>
+            <FavBtn />
           </div>
 
           <ul className={styles.genresList}>
             {genres
               ? genres.map(({ id, name }) => (
                   <li key={id} className={styles.genreItem}>
-                    {name}
+                    <GenreBtn>{name}</GenreBtn>
                   </li>
                 ))
               : null}
