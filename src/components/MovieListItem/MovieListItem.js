@@ -1,40 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { baseImgUrl } from '../../utils/baseImgUrl';
+import { baseImgUrlw300 } from '../../utils/baseImgUrl';
 import styles from './MovieListItem.module.scss';
 
-const limitOverview = (str, limit) => {
-  if (str.length > limit) {
-    const newLength = str
-      .split(' ')
-      .reduce((acc, cur) => (acc < limit ? (acc += cur.length) : acc), 0);
-    return str.slice(0, newLength).concat(' ...');
-  }
-  return str;
-};
-
-const MovieListItem = ({
-  title,
-  poster_path,
-  release_date,
-  vote_average,
-  movie,
-}) => {
-  const year = release_date.slice(0, 4);
-
+const MovieListItem = ({ id, title, poster_path, vote_average }) => {
   return (
     <li className={styles.movieCard}>
       <Link
         to={{
           pathname: `/movie/${title.replace(/\s/g, '')}`,
           state: {
-            ...movie,
+            id: id,
           },
         }}
       >
         <img
           className={styles.movieImage}
-          src={`${baseImgUrl}${poster_path}`}
+          src={`${baseImgUrlw300}${poster_path}`}
           alt={title}
         />
       </Link>
