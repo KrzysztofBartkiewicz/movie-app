@@ -4,7 +4,6 @@ import { routes } from '../../routes';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => {
-  console.log(window.location.pathname);
   return (
     <nav className={styles.navbar}>
       <ul className={styles.list}>

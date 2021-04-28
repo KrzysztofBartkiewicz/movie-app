@@ -1,7 +1,23 @@
-.favBtn {
-  width: 6.8rem;
-  height: 6.8rem;
+.favBtnBig,
+.favBtnSmall {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--color-red);
   border-radius: 2rem;
   border: none;
+}
+
+.favBtnBig {
+  width: 6.8rem;
+  height: 6.8rem;
+}
+
+.favBtnSmall {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  img {
+    width: 1.8rem;
+  }
 }

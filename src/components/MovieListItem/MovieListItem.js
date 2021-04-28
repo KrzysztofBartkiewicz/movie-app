@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { baseImgUrlw300 } from '../../utils/baseImgUrl';
+import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieListItem.module.scss';
+import FavBtn from '../FavBtn/FavBtn';
 
-const MovieListItem = ({ id, title, poster_path, vote_average }) => {
+const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
   return (
     <li className={styles.movieCard}>
       <Link
@@ -22,8 +24,11 @@ const MovieListItem = ({ id, title, poster_path, vote_average }) => {
       </Link>
       <h3 className={styles.movieTitle}>{title}</h3>
       <div className={styles.rateWrapper}>
-        <img src={`${process.env.PUBLIC_URL}/star.svg`} alt="star" />
+        <img src={starIcon} alt="star" />
         <span className={styles.votes}>{vote_average}</span>
+        <div className={styles.buttonWrapper}>
+          <FavBtn small movieToAdd={movie} />
+        </div>
       </div>
     </li>
   );

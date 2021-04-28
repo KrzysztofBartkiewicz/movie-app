@@ -21,6 +21,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.buttonWrapper {
+  justify-self: flex-end;
+  position: absolute;
+  right: 0;
 }
 
 .votes {

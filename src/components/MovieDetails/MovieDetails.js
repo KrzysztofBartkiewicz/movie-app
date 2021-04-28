@@ -3,7 +3,9 @@ import { baseImgUrlw500, baseImgUrlw200 } from '../../utils/baseImgUrl';
 import GenreBtn from '../GenreBtn/GenreBtn';
 import FavBtn from '../FavBtn/FavBtn';
 import { fetchSingleMovie, fetchCast } from '../../api';
+import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieDetails.module.scss';
+import MovieListItem from '../MovieListItem/MovieListItem';
 
 const MovieDetails = ({ movieId }) => {
   const [movie, setMovie] = useState({});
@@ -76,11 +78,7 @@ const MovieDetails = ({ movieId }) => {
       </span>
 
       <div className={styles.votesWrapper}>
-        <img
-          className={styles.votesIcon}
-          src={`${process.env.PUBLIC_URL}/star.svg`}
-          alt="star"
-        />
+        <img className={styles.votesIcon} src={starIcon} alt="star" />
         <span className={styles.votes}>
           <span>{vote_average}</span>/10
         </span>
@@ -88,7 +86,7 @@ const MovieDetails = ({ movieId }) => {
       </div>
 
       <span className={styles.duration}>{`${runtime} min.`}</span>
-      <FavBtn />
+      <FavBtn movieToAdd={movie} />
     </div>
   );
 
