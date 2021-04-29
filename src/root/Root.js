@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import RootContext from '../context';
 import Router from '../routing/Router';
 import { fetchTopRatedMovies } from '../api';
-import { addMovieToLS, removeMovieFromLS } from '../utils/localStorage';
+import {
+  addMovieToLS,
+  getMoviesFromLS,
+  removeMovieFromLS,
+} from '../utils/localStorage';
 
 const Root = () => {
   const [homeMovies, setHomeMovies] = useState([]);
@@ -11,11 +15,11 @@ const Root = () => {
 
   useEffect(() => {
     getTopRatedMovies();
-    getMoviesFromLocalStorage();
+    updateFavMovies();
   }, []);
 
-  const getMoviesFromLocalStorage = () => {
-    const favs = JSON.parse(localStorage.getItem('favs')) || [];
+  const updateFavMovies = () => {
+    const favs = getMoviesFromLS();
     setFavMovies([...favs]);
   };
 
@@ -35,7 +39,7 @@ const Root = () => {
       (movieEl) => movieEl.id === movie.id
     );
     favs.splice(indexToRemove, 1);
-    setFavMovies(favs);
+    setFavMovies([...favs]);
     removeMovieFromLS(movie);
   };
 

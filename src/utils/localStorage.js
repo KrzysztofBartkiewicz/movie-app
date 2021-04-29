@@ -10,3 +10,7 @@ export const removeMovieFromLS = (movie) => {
   favsArr.splice(indexToRemove, 1);
   localStorage.setItem('favs', JSON.stringify(favsArr));
 };
+
+export const getMoviesFromLS = () => {
+  return JSON.parse(localStorage.getItem('favs')) || [];
+};
