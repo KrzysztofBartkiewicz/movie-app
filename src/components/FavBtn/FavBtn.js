@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import plusIcon from '../../assets/icons/plus.svg';
 import minusIcon from '../../assets/icons/minus.svg';
 import RootContext from '../../context';
+import { getMoviesFromLS } from '../../utils/localStorage';
 import styles from './FavBtn.module.scss';
 
 const FavBtn = ({ movie, small }) => {
