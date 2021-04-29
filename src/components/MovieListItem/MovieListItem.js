@@ -27,7 +27,7 @@ const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
         <img src={starIcon} alt="star" />
         <span className={styles.votes}>{vote_average}</span>
         <div className={styles.buttonWrapper}>
-          <FavBtn small movieToAdd={movie} />
+          <FavBtn small movie={movie} />
         </div>
       </div>
     </li>

@@ -5,7 +5,6 @@ import FavBtn from '../FavBtn/FavBtn';
 import { fetchSingleMovie, fetchCast } from '../../api';
 import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieDetails.module.scss';
-import MovieListItem from '../MovieListItem/MovieListItem';
 
 const MovieDetails = ({ movieId }) => {
   const [movie, setMovie] = useState({});
@@ -86,7 +85,7 @@ const MovieDetails = ({ movieId }) => {
       </div>
 
       <span className={styles.duration}>{`${runtime} min.`}</span>
-      <FavBtn movieToAdd={movie} />
+      <FavBtn movie={movie} />
     </div>
   );
 
