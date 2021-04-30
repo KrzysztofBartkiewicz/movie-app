@@ -4,21 +4,21 @@ import minusIcon from '../../assets/icons/minus.svg';
 import RootContext from '../../context';
 import styles from './FavBtn.module.scss';
 
-const FavBtn = ({ movie, small }) => {
+const FavBtn = ({ movieId, small }) => {
   const context = useContext(RootContext);
-  const isAddedToFav = context.favMovies.some(
-    (movieEl) => movieEl.id === movie.id
-  );
-  const handleClick = isAddedToFav
-    ? context.handleRemoveFromFav
-    : context.handleAddToFav;
+  const { favMovies, handleRemoveFromFav, handleAddToFav } = context;
+  const isAddedToFav = favMovies.some((movie) => movie.id === movieId);
+  const handleClick = isAddedToFav ? handleRemoveFromFav : handleAddToFav;
 
   return (
     <button
       className={small ? styles.favBtnSmall : styles.favBtnBig}
-      onClick={() => handleClick(movie)}
+      onClick={() => handleClick(movieId)}
     >
-      <img src={isAddedToFav ? minusIcon : plusIcon} alt="button icon" />
+      <img
+        src={isAddedToFav ? minusIcon : plusIcon}
+        alt={isAddedToFav ? '-' : '+'}
+      />
     </button>
   );
 };

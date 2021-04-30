@@ -2,45 +2,40 @@ import React, { useState, useEffect } from 'react';
 import RootContext from '../context';
 import Router from '../routing/Router';
 import { fetchTopRatedMovies } from '../api';
-import {
-  addMovieToLS,
-  getMoviesFromLS,
-  removeMovieFromLS,
-} from '../utils/localStorage';
+import { getMoviesFromLS } from '../utils/localStorage';
 
 const Root = () => {
   const [homeMovies, setHomeMovies] = useState([]);
   const [movies, setMovies] = useState([]);
-  const [favMovies, setFavMovies] = useState([]);
+  const [favMovies, setFavMovies] = useState(getMoviesFromLS());
+
+  const setFavMoviesToLocalStorage = () => {
+    localStorage.setItem('favs', JSON.stringify(favMovies));
+  };
+
+  useEffect(() => {
+    setFavMoviesToLocalStorage();
+  }, [favMovies]);
 
   useEffect(() => {
     getTopRatedMovies();
-    updateFavMovies();
   }, []);
-
-  const updateFavMovies = () => {
-    const favs = getMoviesFromLS();
-    setFavMovies([...favs]);
-  };
 
   const getTopRatedMovies = async () => {
     const fetchedMovies = await fetchTopRatedMovies();
     setHomeMovies([...fetchedMovies]);
+    setMovies([...fetchedMovies]);
   };
 
-  const handleAddToFav = (movie) => {
-    setFavMovies((prev) => [...prev, movie]);
-    addMovieToLS(movie);
+  const handleAddToFav = (movieId) => {
+    const selectedMovie = homeMovies.find((movie) => movie.id === movieId);
+
+    setFavMovies((prev) => [...prev, selectedMovie]);
   };
 
-  const handleRemoveFromFav = (movie) => {
-    const favs = [...favMovies];
-    const indexToRemove = favMovies.findIndex(
-      (movieEl) => movieEl.id === movie.id
-    );
-    favs.splice(indexToRemove, 1);
-    setFavMovies([...favs]);
-    removeMovieFromLS(movie);
+  const handleRemoveFromFav = (movieId) => {
+    const filteredFavMovies = favMovies.filter((movie) => movie.id !== movieId);
+    setFavMovies([...filteredFavMovies]);
   };
 
   return (
