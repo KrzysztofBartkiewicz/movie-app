@@ -85,7 +85,7 @@ const MovieDetails = ({ movieId }) => {
       </div>
 
       <span className={styles.duration}>{`${runtime} min.`}</span>
-      <FavBtn movie={movie} />
+      <FavBtn movieId={movieId} />
     </div>
   );
 
