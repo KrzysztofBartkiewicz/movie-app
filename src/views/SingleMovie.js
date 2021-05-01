@@ -10,9 +10,7 @@ const SingleMovie = ({ location }) => {
 
   useEffect(() => {
     setIsNavbarVisible(false);
-    return () => {
-      setIsNavbarVisible(true);
-    };
+    return () => setIsNavbarVisible(true);
   });
 
   return (

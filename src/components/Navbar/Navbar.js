@@ -14,7 +14,7 @@ const Navbar = () => {
             to={routes.home}
             exact
           >
-            Home
+            Search
           </NavLink>
         </li>
         <li className={styles.item}>

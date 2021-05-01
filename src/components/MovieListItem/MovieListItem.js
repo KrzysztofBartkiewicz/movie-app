@@ -5,7 +5,7 @@ import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieListItem.module.scss';
 import FavBtn from '../FavBtn/FavBtn';
 
-const MovieListItem = ({ id, title, poster_path, vote_average }) => {
+const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
   return (
     <li className={styles.movieCard}>
       <Link
@@ -25,7 +25,7 @@ const MovieListItem = ({ id, title, poster_path, vote_average }) => {
         <img src={starIcon} alt="star" />
         <span className={styles.votes}>{vote_average}</span>
         <div className={styles.buttonWrapper}>
-          <FavBtn small movieId={id} />
+          <FavBtn small movie={movie} />
         </div>
       </div>
     </li>

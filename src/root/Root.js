@@ -33,15 +33,14 @@ const Root = () => {
     setPopularMovies([...fetchedMovies]);
   };
 
-  const handleAddToFav = (movieId) => {
-    const selectedMovie =
-      topRatedMovies.find((movie) => movie.id === movieId) ||
-      popularMovies.find((movie) => movie.id === movieId);
-    setFavMovies((prev) => [...prev, selectedMovie]);
+  const handleAddToFav = (movieToAdd) => {
+    setFavMovies((prev) => [...prev, movieToAdd]);
   };
 
-  const handleRemoveFromFav = (movieId) => {
-    const filteredFavMovies = favMovies.filter((movie) => movie.id !== movieId);
+  const handleRemoveFromFav = (movieToRemove) => {
+    const filteredFavMovies = favMovies.filter(
+      (movie) => movie.id !== movieToRemove.id
+    );
     setFavMovies([...filteredFavMovies]);
   };
 

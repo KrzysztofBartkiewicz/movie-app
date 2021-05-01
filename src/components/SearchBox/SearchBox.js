@@ -2,14 +2,14 @@ import React from 'react';
 import loupeIcon from '../../assets/icons/loupe.svg';
 import styles from './SearchBox.module.scss';
 
-function SearchBox({ placeholder, value, handleSubmit, handleChange }) {
+function SearchBox({ placeholder, value, onSubmit, onChange }) {
   return (
-    <form className={styles.searchBox} onSubmit={handleSubmit}>
+    <form className={styles.searchBox} onSubmit={onSubmit}>
       <input
         className={styles.textInput}
         type="text"
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
         placeholder={placeholder}
       />
       <button type="submit" className={styles.submitBtn}>

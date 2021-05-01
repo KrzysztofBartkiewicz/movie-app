@@ -7,7 +7,7 @@ const MovieList = ({ moviesArray }) => {
     <ul className={styles.list}>
       {moviesArray.map((movie) => (
         <Fragment key={movie.id}>
-          <MovieListItem {...movie} />
+          <MovieListItem {...movie} movie={movie} />
         </Fragment>
       ))}
     </ul>
