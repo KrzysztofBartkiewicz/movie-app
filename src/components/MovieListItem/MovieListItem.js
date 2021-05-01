@@ -5,15 +5,13 @@ import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieListItem.module.scss';
 import FavBtn from '../FavBtn/FavBtn';
 
-const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
+const MovieListItem = ({ id, title, poster_path, vote_average }) => {
   return (
     <li className={styles.movieCard}>
       <Link
         to={{
           pathname: `/movie/${title.replace(/\s/g, '')}`,
-          state: {
-            id: id,
-          },
+          state: { id },
         }}
       >
         <img

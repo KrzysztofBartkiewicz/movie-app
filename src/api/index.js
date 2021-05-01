@@ -11,6 +11,17 @@ export const fetchTopRatedMovies = () => {
     .catch((err) => console.error(err));
 };
 
+export const fetchPopulardMovies = () => {
+  return axios
+    .get(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+    )
+    .then((res) => {
+      return res.data.results;
+    })
+    .catch((err) => console.error(err));
+};
+
 export const fetchSingleMovie = (id) => {
   return axios
     .get(

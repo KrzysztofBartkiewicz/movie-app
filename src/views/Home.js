@@ -5,10 +5,11 @@ import styles from './sass/Views.module.scss';
 
 const Movies = () => {
   const context = useContext(RootContext);
+  const shortList = context.popularMovies.slice(0, 5);
 
   return (
     <div className={styles.view}>
-      <MovieList moviesArray={context.homeMovies} />
+      <MovieList moviesArray={shortList} />
     </div>
   );
 };

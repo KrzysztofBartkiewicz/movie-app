@@ -8,7 +8,7 @@ const Movies = () => {
   return (
     <div className={styles.view}>
       <h1 className={styles.header}>Movies</h1>
-      <MovieList moviesArray={context.movies} />
+      <MovieList moviesArray={context.topRatedMovies} />
     </div>
   );
 };

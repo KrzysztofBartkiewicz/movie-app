@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import RootContext from '../context';
 import Router from '../routing/Router';
-import { fetchTopRatedMovies } from '../api';
+import { fetchPopulardMovies, fetchTopRatedMovies } from '../api';
 import { getFavMoviesFromLS } from '../utils/localStorage';
 
 const Root = () => {
-  const [homeMovies, setHomeMovies] = useState([]);
-  const [movies, setMovies] = useState([]);
   const [favMovies, setFavMovies] = useState(getFavMoviesFromLS());
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
   const setFavMoviesToLocalStorage = () => {
     localStorage.setItem('favs', JSON.stringify(favMovies));
@@ -19,17 +20,23 @@ const Root = () => {
 
   useEffect(() => {
     getTopRatedMovies();
+    getPopularMovies();
   }, []);
 
   const getTopRatedMovies = async () => {
     const fetchedMovies = await fetchTopRatedMovies();
-    setHomeMovies([...fetchedMovies]);
-    setMovies([...fetchedMovies]);
+    setTopRatedMovies([...fetchedMovies]);
+  };
+
+  const getPopularMovies = async () => {
+    const fetchedMovies = await fetchPopulardMovies();
+    setPopularMovies([...fetchedMovies]);
   };
 
   const handleAddToFav = (movieId) => {
-    const selectedMovie = homeMovies.find((movie) => movie.id === movieId);
-
+    const selectedMovie =
+      topRatedMovies.find((movie) => movie.id === movieId) ||
+      popularMovies.find((movie) => movie.id === movieId);
     setFavMovies((prev) => [...prev, selectedMovie]);
   };
 
@@ -41,9 +48,11 @@ const Root = () => {
   return (
     <RootContext.Provider
       value={{
-        homeMovies,
-        movies,
+        popularMovies,
+        topRatedMovies,
         favMovies,
+        isNavbarVisible,
+        setIsNavbarVisible,
         handleAddToFav,
         handleRemoveFromFav,
       }}
