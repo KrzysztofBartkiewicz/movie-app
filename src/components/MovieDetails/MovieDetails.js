@@ -41,18 +41,20 @@ const MovieDetails = ({ movieId }) => {
       <h3 className={styles.castHeading}>Cast</h3>
       <ul className={styles.castList}>
         {cast
-          ? cast.slice(0, 5).map(({ name, character, profile_path }) => (
-              <li className={styles.castItem}>
-                <div
-                  className={styles.castImage}
-                  style={{
-                    backgroundImage: `url(${baseImgUrlw200}${profile_path})`,
-                  }}
-                ></div>
-                <span className={styles.castName}>{name}</span>
-                <span className={styles.castCharacter}>{character}</span>
-              </li>
-            ))
+          ? cast
+              .slice(0, 5)
+              .map(({ name, character, profile_path, cast_id }) => (
+                <li key={cast_id} className={styles.castItem}>
+                  <div
+                    className={styles.castImage}
+                    style={{
+                      backgroundImage: `url(${baseImgUrlw200}${profile_path})`,
+                    }}
+                  ></div>
+                  <span className={styles.castName}>{name}</span>
+                  <span className={styles.castCharacter}>{character}</span>
+                </li>
+              ))
           : null}
       </ul>
     </div>
@@ -61,8 +63,8 @@ const MovieDetails = ({ movieId }) => {
   const renderGenresList = () => (
     <ul className={styles.genresList}>
       {genres
-        ? genres.map(({ movieId, name }) => (
-            <li key={movieId} className={styles.genreItem}>
+        ? genres.map(({ id, name }) => (
+            <li key={id} className={styles.genreItem}>
               <GenreBtn>{name}</GenreBtn>
             </li>
           ))

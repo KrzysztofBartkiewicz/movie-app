@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import MovieList from '../components/MovieList/MovieList';
 import RootContext from '../context';
+import { fetchSearchMovies } from '../api';
 import styles from './sass/Views.module.scss';
+import SearchBox from '../components/SearchBox/SearchBox';
 
 const Movies = () => {
-  const context = useContext(RootContext);
-  const shortList = context.popularMovies.slice(0, 5);
-
   return (
     <div className={styles.view}>
-      <MovieList moviesArray={shortList} />
+      <SearchBox />
     </div>
   );
 };

@@ -43,3 +43,14 @@ export const fetchCast = (id) => {
     })
     .catch((err) => console.error(err));
 };
+
+export const fetchSearchMovies = (query) => {
+  return axios
+    .get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${query}&language=en-US&page=1`
+    )
+    .then((res) => {
+      return res.data.results;
+    })
+    .catch((err) => console.error(err));
+};
