@@ -9,12 +9,12 @@ const Movies = () => {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState(false);
 
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     getMovies(inputValue);
   };
 

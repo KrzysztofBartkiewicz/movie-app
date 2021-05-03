@@ -1,23 +1,23 @@
 import axios from 'axios';
 
-export const fetchTopRatedMovies = () => {
+export const fetchTopRatedMovies = (pageNumber) => {
   return axios
     .get(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${pageNumber}`
     )
     .then((res) => {
-      return res.data.results;
+      return res.data;
     })
     .catch((err) => console.error(err));
 };
 
-export const fetchPopulardMovies = () => {
+export const fetchPopulardMovies = (pageNumber) => {
   return axios
     .get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${pageNumber}`
     )
     .then((res) => {
-      return res.data.results;
+      return res.data;
     })
     .catch((err) => console.error(err));
 };

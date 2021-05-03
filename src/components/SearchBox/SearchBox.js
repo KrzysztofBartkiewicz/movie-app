@@ -2,7 +2,7 @@ import React from 'react';
 import loupeIcon from '../../assets/icons/loupe.svg';
 import styles from './SearchBox.module.scss';
 
-function SearchBox({ placeholder, value, onSubmit, onChange }) {
+const SearchBox = ({ placeholder, value, onSubmit, onChange }) => {
   return (
     <form className={styles.searchBox} onSubmit={onSubmit}>
       <input
@@ -17,6 +17,6 @@ function SearchBox({ placeholder, value, onSubmit, onChange }) {
       </button>
     </form>
   );
-}
+};
 
 export default SearchBox;

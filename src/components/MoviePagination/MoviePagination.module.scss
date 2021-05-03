@@ -1,0 +1,23 @@
+.paginationWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.goBackBtn,
+.goNextBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--color-red);
+  color: #fff;
+  &:disabled {
+    background-color: var(--color-grey-2);
+    filter: blur(1px);
+    cursor: default;
+  }
+}
+
+.pageNumber {
+  margin: 0 1rem;
+  font-size: 1.6rem;
+}
