@@ -9,22 +9,22 @@ const Movies = ({ location }) => {
   const { topRatedMovies, popularMovies } = context;
   const { pathname } = location;
 
-  const setMoviesType = () => {
-    if (pathname === '/movies/popular') {
-      return { arr: popularMovies, type: movieTypes.popular };
-    }
-    if (pathname === '/movies/topRated') {
-      return { arr: topRatedMovies, type: movieTypes.topRated };
-    }
-  };
+  let type = null;
+  let arr = null;
+
+  if (pathname === '/movies/popular') {
+    type = movieTypes.popular;
+    arr = popularMovies;
+  }
+  if (pathname === '/movies/topRated') {
+    type = movieTypes.topRated;
+    arr = topRatedMovies;
+  }
 
   return (
     <div className={styles.view}>
       <h1 className={styles.header}>Movies</h1>
-      <MovieList
-        moviesType={setMoviesType().type}
-        moviesArray={setMoviesType().arr}
-      />
+      <MovieList moviesType={type} moviesArray={arr} />
     </div>
   );
 };

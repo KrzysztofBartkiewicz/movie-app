@@ -8,32 +8,55 @@ const MoviePagination = ({ moviesType }) => {
   const {
     topRatedMoviesPageNumber,
     popularMoviesPageNumber,
+    topRatedTotalPages,
+    popularTotalPages,
     goToNextPage,
     goToPrevPage,
   } = context;
 
-  const setMovieTypes = () => {
-    if (moviesType === movieTypes.popular) {
-      return popularMoviesPageNumber;
-    }
-    if (moviesType === movieTypes.topRated) {
-      return topRatedMoviesPageNumber;
-    }
-  };
+  let pageNumber = null;
+  let totalPages = null;
+
+  if (moviesType === movieTypes.popular) {
+    pageNumber = popularMoviesPageNumber;
+    totalPages = popularTotalPages;
+  }
+  if (moviesType === movieTypes.topRated) {
+    pageNumber = topRatedMoviesPageNumber;
+    totalPages = topRatedTotalPages;
+  }
+
+  const pages = new Array(totalPages).fill(null).map((page, i) => {
+    page = i + 1;
+    return (
+      <button
+        // TODO: Make oncklick fun
+        key={i}
+        className={`${styles.pageNumber} ${
+          page === pageNumber ? styles.activePageNumber : null
+        }`}
+      >
+        {page}
+      </button>
+    );
+  });
 
   return (
     <div className={styles.paginationWrapper}>
       <button
         className={styles.goBackBtn}
         onClick={() => goToPrevPage(moviesType)}
-        disabled={setMovieTypes() === 1 && true}
+        disabled={pageNumber === 1 && true}
       >
         {'< go back'}
       </button>
-      <h3 className={styles.pageNumber}>{setMovieTypes()}</h3>
+      {pageNumber !== 1 && <span className={styles.dots}>...</span>}
+      {pages.filter((undefined, i) => i > pageNumber - 4 && i < pageNumber + 2)}
+      {pageNumber !== totalPages && <span className={styles.dots}>...</span>}
       <button
         className={styles.goNextBtn}
         onClick={() => goToNextPage(moviesType)}
+        disabled={pageNumber === totalPages && true}
       >
         {'go next >'}
       </button>
