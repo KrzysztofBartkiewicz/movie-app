@@ -7,6 +7,10 @@
   justify-content: flex-start;
 }
 
+.item {
+  position: relative;
+}
+
 .link {
   display: block;
   padding: 2rem;
@@ -25,4 +29,32 @@
   margin-top: 1.5rem;
   border-radius: 0.5rem;
   background: var(--color-red);
+}
+
+.subMenu {
+  display: none;
+  position: absolute;
+  left: 2rem;
+  border: 1px solid var(--color-grey);
+  border-radius: 0.5rem;
+}
+
+.item:hover .subMenu {
+  display: block;
+}
+
+.subItem {
+  padding: 0.5rem;
+  color: var(--color-black);
+  &:hover {
+    background-color: var(--color-red);
+    color: #fff;
+  }
+}
+
+.subLink {
+  padding: 1rem 0;
+  font-size: 2rem;
+  text-decoration: none;
+  color: inherit;
 }

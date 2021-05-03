@@ -13,7 +13,10 @@ const FavBtn = ({ movie, small }) => {
   return (
     <button
       className={small ? styles.favBtnSmall : styles.favBtnBig}
-      onClick={() => handleClick(movie)}
+      onClick={(event) => {
+        event.preventDefault();
+        handleClick(movie);
+      }}
     >
       <img
         src={isAddedToFav ? minusIcon : plusIcon}

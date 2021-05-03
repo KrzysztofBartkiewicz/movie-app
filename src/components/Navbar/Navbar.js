@@ -4,6 +4,21 @@ import { routes } from '../../routes';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => {
+  const renderSubMenu = () => (
+    <ul className={styles.subMenu}>
+      <li className={styles.subItem}>
+        <NavLink className={styles.subLink} to={routes.popular}>
+          Popular
+        </NavLink>
+      </li>
+      <li className={styles.subItem}>
+        <NavLink className={styles.subLink} to={routes.topRated}>
+          Top Rated
+        </NavLink>
+      </li>
+    </ul>
+  );
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.list}>
@@ -22,10 +37,10 @@ const Navbar = () => {
             className={styles.link}
             activeClassName={styles.active}
             to={routes.movies}
-            exact
           >
             Movies
           </NavLink>
+          {renderSubMenu()}
         </li>
         <li className={styles.item}>
           <NavLink

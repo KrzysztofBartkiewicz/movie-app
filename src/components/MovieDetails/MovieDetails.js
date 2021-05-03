@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { baseImgUrlw500, baseImgUrlw200 } from '../../utils/baseImgUrl';
 import GenreBtn from '../GenreBtn/GenreBtn';
-import FavBtn from '../FavBtn/FavBtn';
 import { fetchSingleMovie, fetchCast } from '../../api';
 import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieDetails.module.scss';
+import FavBtn from '../FavBtn/FavBtn';
 
 const MovieDetails = ({ movieId }) => {
   const [movie, setMovie] = useState({});

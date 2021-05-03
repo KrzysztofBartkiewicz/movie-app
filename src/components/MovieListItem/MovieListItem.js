@@ -14,19 +14,21 @@ const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
           state: { id },
         }}
       >
-        <img
-          className={styles.movieImage}
-          src={`${baseImgUrlw300}${poster_path}`}
-          alt={title}
-        />
+        <div className={styles.imgWrapper}>
+          <div className={styles.btnWrapper}>
+            <FavBtn movie={movie} />
+          </div>
+          <img
+            className={styles.movieImage}
+            src={`${baseImgUrlw300}${poster_path}`}
+            alt={title}
+          />
+        </div>
       </Link>
       <h3 className={styles.movieTitle}>{title}</h3>
       <div className={styles.rateWrapper}>
         <img src={starIcon} alt="star" />
         <span className={styles.votes}>{vote_average}</span>
-        <div className={styles.buttonWrapper}>
-          <FavBtn small movie={movie} />
-        </div>
       </div>
     </li>
   );

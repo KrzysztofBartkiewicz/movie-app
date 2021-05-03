@@ -4,4 +4,6 @@ export const routes = {
   favMovies: '/favMovies',
   blog: '/blog',
   singleMovie: '/movie/:movieTitle',
+  topRated: '/movies/topRated',
+  popular: '/movies/popular',
 };
