@@ -44,13 +44,13 @@ export const fetchCast = (id) => {
     .catch((err) => console.error(err));
 };
 
-export const fetchSearchMovies = (query) => {
+export const fetchSearchMovies = (query, pageNumber) => {
   return axios
     .get(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${query}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${query}&language=en-US&page=${pageNumber}`
     )
     .then((res) => {
-      return res.data.results;
+      return res.data;
     })
     .catch((err) => console.error(err));
 };

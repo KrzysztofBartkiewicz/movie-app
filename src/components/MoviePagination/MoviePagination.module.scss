@@ -32,8 +32,13 @@
   background-color: transparent;
 }
 
+.pageNumberTotal {
+  font-weight: 700;
+}
+
 .activePageNumber {
   color: var(--color-red);
+  pointer-events: none;
 }
 
 .dots {

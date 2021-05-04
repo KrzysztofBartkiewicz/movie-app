@@ -8,10 +8,13 @@ const MoviePagination = ({ moviesType }) => {
   const {
     topRatedMoviesPageNumber,
     popularMoviesPageNumber,
+    searchedMoviesPageNumber,
     topRatedTotalPages,
     popularTotalPages,
+    searchedTotalPages,
     goToNextPage,
     goToPrevPage,
+    goToPage,
   } = context;
 
   let pageNumber = null;
@@ -25,15 +28,20 @@ const MoviePagination = ({ moviesType }) => {
     pageNumber = topRatedMoviesPageNumber;
     totalPages = topRatedTotalPages;
   }
+  if (moviesType === movieTypes.searched) {
+    pageNumber = searchedMoviesPageNumber;
+    totalPages = searchedTotalPages;
+  }
 
   const pages = new Array(totalPages).fill(null).map((page, i) => {
     page = i + 1;
+
     return (
       <button
-        // TODO: Make oncklick fun
+        onClick={() => goToPage(moviesType, page)}
         key={i}
         className={`${styles.pageNumber} ${
-          page === pageNumber ? styles.activePageNumber : null
+          page === pageNumber && styles.activePageNumber
         }`}
       >
         {page}
@@ -50,9 +58,31 @@ const MoviePagination = ({ moviesType }) => {
       >
         {'< go back'}
       </button>
-      {pageNumber !== 1 && <span className={styles.dots}>...</span>}
+
+      {pageNumber > 3 && (
+        <>
+          <button
+            onClick={() => goToPage(moviesType, 1)}
+            className={`${styles.pageNumber} ${styles.pageNumberTotal}`}
+          >
+            {1}
+          </button>
+          <span className={styles.dots}>...</span>
+        </>
+      )}
       {pages.filter((undefined, i) => i > pageNumber - 4 && i < pageNumber + 2)}
-      {pageNumber !== totalPages && <span className={styles.dots}>...</span>}
+      {pageNumber < totalPages - 2 && (
+        <>
+          <span className={styles.dots}>...</span>
+          <button
+            onClick={() => goToPage(moviesType, totalPages)}
+            className={`${styles.pageNumber} ${styles.pageNumberTotal}`}
+          >
+            {totalPages}
+          </button>
+        </>
+      )}
+
       <button
         className={styles.goNextBtn}
         onClick={() => goToNextPage(moviesType)}

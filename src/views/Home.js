@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import MovieList from '../components/MovieList/MovieList';
-import { fetchSearchMovies } from '../api';
 import SearchBox from '../components/SearchBox/SearchBox';
 import styles from './sass/Views.module.scss';
+import RootContext from '../context';
+import { movieTypes } from '../helpers/movieTypes';
 
 const Movies = () => {
-  const [movies, setMovies] = useState([]);
+  const context = useContext(RootContext);
+  const { setQuery, searchedMovies } = context;
+
   const [inputValue, setInputValue] = useState('');
-  const [error, setError] = useState(false);
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -15,17 +17,7 @@ const Movies = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getMovies(inputValue);
-  };
-
-  const getMovies = async (query) => {
-    const fetchedMovies = await fetchSearchMovies(query);
-    if (!fetchedMovies || fetchedMovies.length === 0) {
-      setError('No results');
-      return;
-    }
-    setError(false);
-    setMovies([...fetchedMovies]);
+    setQuery(inputValue);
   };
 
   return (
@@ -37,10 +29,13 @@ const Movies = () => {
         value={inputValue}
         placeholder="Search for movies"
       />
-      {error ? (
-        <h3 className={styles.info}>{error}</h3>
+      {!searchedMovies || searchedMovies.length === 0 ? (
+        <h3 className={styles.info}>No results</h3>
       ) : (
-        <MovieList moviesArray={movies} />
+        <MovieList
+          moviesType={movieTypes.searched}
+          moviesArray={searchedMovies}
+        />
       )}
     </div>
   );
