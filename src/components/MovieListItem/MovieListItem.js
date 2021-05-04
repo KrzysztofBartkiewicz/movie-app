@@ -4,6 +4,7 @@ import { baseImgUrlw300 } from '../../utils/baseImgUrl';
 import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieListItem.module.scss';
 import FavBtn from '../FavBtn/FavBtn';
+import noImage from '../../assets/images/noimage.png';
 
 const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
   return (
@@ -18,11 +19,19 @@ const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
           <div className={styles.btnWrapper}>
             <FavBtn movie={movie} />
           </div>
-          <img
-            className={styles.movieImage}
-            src={`${baseImgUrlw300}${poster_path}`}
-            alt={title}
-          />
+          {poster_path ? (
+            <img
+              className={styles.movieImage}
+              src={`${baseImgUrlw300}${poster_path}`}
+              alt={title}
+            />
+          ) : (
+            <img
+              className={styles.noImage}
+              src={noImage}
+              alt="No image avaliable"
+            />
+          )}
         </div>
       </Link>
       <h3 className={styles.movieTitle}>{title}</h3>
