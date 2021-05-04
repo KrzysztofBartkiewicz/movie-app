@@ -12,7 +12,7 @@ const Movies = ({ location }) => {
   let type = null;
   let arr = null;
 
-  if (pathname === '/movies/popular') {
+  if (pathname === '/movies/popular' || pathname === '/movies') {
     type = movieTypes.popular;
     arr = popularMovies;
   }
