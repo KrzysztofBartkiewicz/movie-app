@@ -27,7 +27,7 @@ const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
             />
           ) : (
             <img
-              className={styles.noImage}
+              className={styles.movieImage}
               src={noImage}
               alt="No image avaliable"
             />
