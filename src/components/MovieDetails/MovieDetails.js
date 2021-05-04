@@ -5,6 +5,7 @@ import { fetchSingleMovie, fetchCast } from '../../api';
 import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieDetails.module.scss';
 import FavBtn from '../FavBtn/FavBtn';
+import noImage from '../../assets/images/noimage.png';
 
 const MovieDetails = ({ movieId }) => {
   const [movie, setMovie] = useState({});
@@ -93,11 +94,19 @@ const MovieDetails = ({ movieId }) => {
 
   return (
     <div className={styles.movieWrapper}>
-      <img
-        className={styles.movieImage}
-        src={`${baseImgUrlw500}${poster_path}`}
-        alt={title}
-      />
+      {poster_path ? (
+        <img
+          className={styles.movieImage}
+          src={`${baseImgUrlw500}${poster_path}`}
+          alt={title}
+        />
+      ) : (
+        <img
+          className={styles.noImage}
+          src={noImage}
+          alt="No image avaliable"
+        />
+      )}
       <div className={styles.contentWrapper}>
         <h2 className={styles.titleHeading}>{title}</h2>
         {renderDetailsWrapper()}
