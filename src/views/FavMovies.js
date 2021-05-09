@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import MovieList from '../components/MovieList/MovieList';
 import RootContext from '../context';
+import { movieTypes } from '../helpers/movieTypes';
 import styles from './sass/Views.module.scss';
 
 const FavMovies = () => {
@@ -13,7 +14,10 @@ const FavMovies = () => {
       {favMovies.length === 0 ? (
         <h2 className={styles.info}>Favorite list is empty</h2>
       ) : (
-        <MovieList moviesArray={context.favMovies} />
+        <MovieList
+          moviesType={movieTypes.favorites}
+          moviesArray={context.favMovies}
+        />
       )}
     </div>
   );
