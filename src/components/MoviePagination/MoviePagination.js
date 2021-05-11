@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import RootContext from '../../context';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBackward, faForward } from '@fortawesome/free-solid-svg-icons';
 import { movieTypes } from '../../helpers/movieTypes';
 import styles from './MoviePagination.module.scss';
 
@@ -56,7 +58,7 @@ const MoviePagination = ({ moviesType }) => {
         onClick={() => goToPrevPage(moviesType)}
         disabled={pageNumber === 1 && true}
       >
-        {'< go back'}
+        <FontAwesomeIcon icon={faBackward} />
       </button>
 
       {pageNumber > 3 && (
@@ -88,7 +90,7 @@ const MoviePagination = ({ moviesType }) => {
         onClick={() => goToNextPage(moviesType)}
         disabled={pageNumber === totalPages && true}
       >
-        {'go next >'}
+        <FontAwesomeIcon icon={faForward} />
       </button>
     </div>
   );

@@ -1,5 +1,6 @@
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import loupeIcon from '../../assets/icons/loupe.svg';
 import styles from './SearchBox.module.scss';
 
 const SearchBox = ({ placeholder, value, onSubmit, onChange }) => {
@@ -13,7 +14,7 @@ const SearchBox = ({ placeholder, value, onSubmit, onChange }) => {
         placeholder={placeholder}
       />
       <button type="submit" className={styles.submitBtn}>
-        <img src={loupeIcon} alt="search" />
+        <FontAwesomeIcon icon={faSearch} size="2x" color="#FFF" />
       </button>
     </form>
   );

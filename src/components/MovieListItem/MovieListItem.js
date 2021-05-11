@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { baseImgUrlw300 } from '../../utils/baseImgUrl';
-import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieListItem.module.scss';
 import FavBtn from '../FavBtn/FavBtn';
 import noImage from '../../assets/images/noimage.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
   return (
@@ -36,7 +37,7 @@ const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
       </Link>
       <h3 className={styles.movieTitle}>{title}</h3>
       <div className={styles.rateWrapper}>
-        <img src={starIcon} alt="star" />
+        <FontAwesomeIcon icon={faStar} color="#FCC419" size="lg" />
         <span className={styles.votes}>{vote_average}</span>
       </div>
     </li>

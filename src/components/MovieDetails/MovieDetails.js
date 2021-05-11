@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { baseImgUrlw500, baseImgUrlw200 } from '../../utils/baseImgUrl';
 import GenreBtn from '../GenreBtn/GenreBtn';
 import { fetchSingleMovie, fetchCast } from '../../api';
-import starIcon from '../../assets/icons/star.svg';
 import styles from './MovieDetails.module.scss';
 import FavBtn from '../FavBtn/FavBtn';
 import noImage from '../../assets/images/noimage.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const MovieDetails = ({ movieId }) => {
   const [movie, setMovie] = useState({});
@@ -80,7 +81,7 @@ const MovieDetails = ({ movieId }) => {
       </span>
 
       <div className={styles.votesWrapper}>
-        <img className={styles.votesIcon} src={starIcon} alt="star" />
+        <FontAwesomeIcon icon={faStar} color="#FCC419" size="lg" />
         <span className={styles.votes}>
           <span>{vote_average}</span>/10
         </span>

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import plusIcon from '../../assets/icons/plus.svg';
-import minusIcon from '../../assets/icons/minus.svg';
 import RootContext from '../../context';
 import styles from './FavBtn.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const FavBtn = ({ movie, small }) => {
   const context = useContext(RootContext);
@@ -18,9 +18,10 @@ const FavBtn = ({ movie, small }) => {
         handleClick(movie);
       }}
     >
-      <img
-        src={isAddedToFav ? minusIcon : plusIcon}
-        alt={isAddedToFav ? '-' : '+'}
+      <FontAwesomeIcon
+        icon={isAddedToFav ? faMinus : faPlus}
+        color="#FFF"
+        size="lg"
       />
     </button>
   );
