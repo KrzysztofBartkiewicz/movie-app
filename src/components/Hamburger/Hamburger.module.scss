@@ -1,0 +1,57 @@
+@import '../../sass/variables';
+
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  padding: 2rem 1.5rem;
+  background-color: transparent;
+  z-index: 100;
+  border: none;
+  outline: none;
+
+  @media screen and (max-width: $smBp) {
+    display: block;
+  }
+}
+
+.bar {
+  display: block;
+  width: 4rem;
+  height: 3px;
+  background-color: var(--color-black);
+  position: relative;
+  transition: background-color 0.4s 0.3s ease-in-out;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: var(--color-black);
+    left: 0;
+    transition: transform 0.4s 0.3s ease-in-out;
+  }
+
+  &::before {
+    top: -1rem;
+  }
+
+  &::after {
+    top: 1rem;
+  }
+}
+
+.active .bar {
+  background-color: transparent;
+}
+
+.active .bar::before {
+  transform: translateY(1rem) rotate(-45deg);
+}
+
+.active .bar::after {
+  transform: translateY(-1rem) rotate(45deg);
+}
