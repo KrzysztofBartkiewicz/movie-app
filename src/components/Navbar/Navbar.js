@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { routes } from '../../routes';
+import RootContext from '../../context';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => {
+  const { isMenuVisible, setIsMenuVisible } = useContext(RootContext);
+
   const renderSubMenu = () => (
     <ul className={styles.subMenu}>
       <li className={styles.subItem}>
@@ -21,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      <ul className={styles.list}>
+      <ul className={`${styles.list} ${isMenuVisible && styles.visible}`}>
         <li className={styles.item}>
           <NavLink
             className={styles.link}

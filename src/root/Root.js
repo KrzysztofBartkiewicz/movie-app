@@ -26,6 +26,7 @@ const Root = () => {
   const [query, setQuery] = useState('');
 
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const setFavMoviesToLocalStorage = () => {
     localStorage.setItem('favs', JSON.stringify(favMovies));
@@ -138,6 +139,8 @@ const Root = () => {
         popularTotalPages,
         topRatedTotalPages,
         searchedTotalPages,
+        isMenuVisible,
+        setIsMenuVisible,
         setQuery,
         goToPage,
         setIsNavbarVisible,

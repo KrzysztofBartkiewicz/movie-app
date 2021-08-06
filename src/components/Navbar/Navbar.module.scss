@@ -13,12 +13,21 @@
 .list {
   display: flex;
   justify-content: flex-start;
+  background-color: white;
+  transition: left 1s;
 
   @media screen and (max-width: $smBp) {
+    width: 100vw;
+    height: 100vh;
     flex-direction: column;
     position: absolute;
     left: -100%;
+    z-index: 50;
   }
+}
+
+.visible {
+  left: 0;
 }
 
 .item {
@@ -55,11 +64,16 @@
 
 .item:hover .subMenu {
   display: block;
+
+  @media screen and (max-width: $smBp) {
+    display: none;
+  }
 }
 
 .subItem {
   padding: 0.5rem;
   color: var(--color-black);
+
   &:hover {
     background-color: var(--color-red);
     color: #fff;

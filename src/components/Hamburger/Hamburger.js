@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import RootContext from '../../context';
 import styles from './Hamburger.module.scss';
 
 const Hamburger = () => {
-  const [isActive, setIsActive] = useState(false);
-
-  const handleClick = () => {
-    setIsActive((prev) => !prev);
-  };
+  const { isMenuVisible, setIsMenuVisible } = useContext(RootContext);
 
   return (
     <button
-      onClick={handleClick}
-      className={`${styles.hamburger} ${isActive && styles.active}`}
+      onClick={() => setIsMenuVisible((prev) => !prev)}
+      className={`${styles.hamburger} ${isMenuVisible && styles.active}`}
     >
       <span className={styles.bar}></span>
     </button>
