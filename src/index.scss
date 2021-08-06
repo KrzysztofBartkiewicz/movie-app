@@ -1,3 +1,5 @@
+@import './sass/variables';
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,11 @@
 
 html {
   font-family: 'Montserrat';
-  font-size: 10px;
+  font-size: 62.5%;
+
+  @media screen and (max-width: $smBp) {
+    font-size: 50%;
+  }
 }
 
 button {
@@ -17,8 +23,8 @@ ul {
   list-style: none;
 }
 
-// COLORS
 :root {
+  // COLORS
   --color-black: #12153d;
   --color-grey: #737599;
   --color-grey-2: #bbbbbb;
