@@ -14,15 +14,6 @@ const Router = () => {
       <NavbarTemplate>
         <Switch>
           <Route exact path={routes.home} component={Home} />
-          {/* <Route exact path={routes.home} component={() => <><Home /> </>} /> */}
-
-          {/* <Route exact path={routes.home}>
-            <Navbar/>
-            <Home />
-            <Footer/>
-            
-          </Route> */}
-
           <Route path={routes.movies} component={Movies} />
           <Route path={routes.favMovies} component={FavMovies} />
           <Route path={routes.blog} component={Blog} />
