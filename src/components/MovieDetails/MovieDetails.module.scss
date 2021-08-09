@@ -77,10 +77,14 @@
 
 .genresList {
   display: flex;
-  flex-wrap: wrap;
   margin-bottom: 4rem;
   font-size: 1.6rem;
   font-weight: 500;
+
+  @media screen and (max-width: $smBp) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .genreItem {
@@ -118,6 +122,11 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  font-size: 1.8rem;
+
+  @media screen and (max-width: $smBp) {
+    font-size: 1.4rem;
+  }
 }
 
 .castImage {
@@ -128,16 +137,20 @@
   background-position: center;
   background-size: 8rem;
   background-repeat: no-repeat;
+
+  @media screen and (max-width: $smBp) {
+    width: 6rem;
+    height: 6rem;
+  }
 }
 
 .castName {
   margin-bottom: 0.8rem;
-  font-size: 1.8rem;
+
   font-weight: 500;
 }
 
 .castCharacter {
-  font-size: 1.8rem;
   color: var(--color-grey);
 }
 

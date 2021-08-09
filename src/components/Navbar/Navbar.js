@@ -5,7 +5,7 @@ import RootContext from '../../context';
 import styles from './Navbar.module.scss';
 
 const Navbar = () => {
-  const { isMenuVisible, setIsMenuVisible } = useContext(RootContext);
+  const { isMenuVisible } = useContext(RootContext);
 
   const renderSubMenu = () => (
     <ul className={styles.subMenu}>
