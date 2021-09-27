@@ -1,6 +1,10 @@
-@import '../../sass/variables';
+import styled, { css } from 'styled-components';
 
-.hamburger {
+type BarProps = {
+  isMenuVisible: boolean;
+};
+
+export const StyledHamburger = styled.button`
   display: none;
   position: fixed;
   top: 3rem;
@@ -11,17 +15,18 @@
   border: none;
   outline: none;
 
-  @media screen and (max-width: $smBp) {
+  ${({ theme }) => theme.mq.smBp} {
     display: block;
   }
-}
+`;
 
-.bar {
+export const StyledBar = styled.span<BarProps>`
   display: block;
   width: 4rem;
   height: 3px;
   background-color: var(--color-black);
   position: relative;
+  background-color: ${({ isMenuVisible }) => isMenuVisible && 'transparent'};
   transition: background-color 0.4s 0.3s ease-in-out;
 
   &::before,
@@ -37,21 +42,21 @@
 
   &::before {
     top: -1rem;
+
+    ${({ isMenuVisible }) =>
+      isMenuVisible &&
+      css`
+        transform: translateY(1rem) rotate(-45deg);
+      `}
   }
 
   &::after {
     top: 1rem;
+
+    ${({ isMenuVisible }) =>
+      isMenuVisible &&
+      css`
+        transform: translateY(-1rem) rotate(45deg);
+      `}
   }
-}
-
-.active .bar {
-  background-color: transparent;
-}
-
-.active .bar::before {
-  transform: translateY(1rem) rotate(-45deg);
-}
-
-.active .bar::after {
-  transform: translateY(-1rem) rotate(45deg);
-}
+`;
