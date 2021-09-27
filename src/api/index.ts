@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { SingleMovieData } from '../types';
 
-export const fetchTopRatedMovies = (pageNumber) => {
+export const fetchTopRatedMovies = (pageNumber: number) => {
   return axios
     .get(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${pageNumber}`
@@ -11,7 +12,7 @@ export const fetchTopRatedMovies = (pageNumber) => {
     .catch((err) => console.error(err));
 };
 
-export const fetchPopulardMovies = (pageNumber) => {
+export const fetchPopulardMovies = (pageNumber: number) => {
   return axios
     .get(
       `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${pageNumber}`
@@ -22,10 +23,10 @@ export const fetchPopulardMovies = (pageNumber) => {
     .catch((err) => console.error(err));
 };
 
-export const fetchSingleMovie = (id) => {
+export const fetchSingleMovie = (id: number): Promise<SingleMovieData> => {
   return axios
     .get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     )
     .then((res) => {
       return res.data;
@@ -33,7 +34,7 @@ export const fetchSingleMovie = (id) => {
     .catch((err) => console.error(err));
 };
 
-export const fetchCast = (id) => {
+export const fetchCast = (id: number) => {
   return axios
     .get(
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
@@ -44,7 +45,7 @@ export const fetchCast = (id) => {
     .catch((err) => console.error(err));
 };
 
-export const fetchSearchMovies = (query, pageNumber) => {
+export const fetchSearchMovies = (query: string, pageNumber: number) => {
   return axios
     .get(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${query}&language=en-US&page=${pageNumber}`
