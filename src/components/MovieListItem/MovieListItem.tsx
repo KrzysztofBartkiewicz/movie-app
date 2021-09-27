@@ -1,46 +1,51 @@
-import React from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { baseImgUrlw300 } from '../../utils/baseImgUrl';
-import styles from './MovieListItem.module.scss';
 import FavBtn from '../FavBtn/FavBtn';
 import noImage from '../../assets/images/noimage.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import {
+  StyledBtnWrapper,
+  StyledCard,
+  StyledImgWrapper,
+  StyledMovieImage,
+  StyledMovieTitle,
+  StyledRateWrapper,
+  StyledVotes,
+} from './StyledMovieListItem';
+import { MovieData } from '../../interfaces';
 
-const MovieListItem = ({ id, title, poster_path, vote_average, movie }) => {
+const MovieListItem: FC<MovieData> = ({ ...movie }) => {
+  const { id, title, poster_path, vote_average } = movie;
   return (
-    <li className={styles.movieCard}>
+    <StyledCard>
       <Link
         to={{
           pathname: `/movie/${title.replace(/\s/g, '')}`,
           state: { id },
         }}
       >
-        <div className={styles.imgWrapper}>
-          <div className={styles.btnWrapper}>
+        <StyledImgWrapper>
+          <StyledBtnWrapper>
             <FavBtn movie={movie} />
-          </div>
+          </StyledBtnWrapper>
           {poster_path ? (
-            <img
-              className={styles.movieImage}
+            <StyledMovieImage
               src={`${baseImgUrlw300}${poster_path}`}
               alt={title}
             />
           ) : (
-            <img
-              className={styles.movieImage}
-              src={noImage}
-              alt="No image avaliable"
-            />
+            <StyledMovieImage src={noImage} alt="No image avaliable" />
           )}
-        </div>
+        </StyledImgWrapper>
       </Link>
-      <h3 className={styles.movieTitle}>{title}</h3>
-      <div className={styles.rateWrapper}>
+      <StyledMovieTitle>{title}</StyledMovieTitle>
+      <StyledRateWrapper>
         <FontAwesomeIcon icon={faStar} color="#FCC419" size="lg" />
-        <span className={styles.votes}>{vote_average}</span>
-      </div>
-    </li>
+        <StyledVotes>{vote_average}</StyledVotes>
+      </StyledRateWrapper>
+    </StyledCard>
   );
 };
 

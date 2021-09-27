@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { StyledFavBtn } from './StyledFavBtn';
 
-import { SingleMovieData } from '../../interfaces';
+import { MovieData } from '../../interfaces';
 
 type FavBtnProps = {
-  movie: SingleMovieData;
-  small: boolean;
+  movie: MovieData;
+  small?: boolean;
 };
 
 const FavBtn: FC<FavBtnProps> = ({ movie, small }) => {
@@ -16,7 +16,7 @@ const FavBtn: FC<FavBtnProps> = ({ movie, small }) => {
     useContext(RootContext);
 
   const isAddedToFav = favMovies.some(
-    (favMovie: SingleMovieData) => favMovie.id === movie.id
+    (favMovie: MovieData) => favMovie.id === movie.id
   );
   const handleClick = isAddedToFav ? handleRemoveFromFav : handleAddToFav;
 

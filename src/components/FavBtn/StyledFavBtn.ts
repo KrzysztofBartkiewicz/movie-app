@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 type BtnProps = {
-  small: boolean;
+  small?: boolean;
 };
 
 export const StyledFavBtn = styled.button<BtnProps>`

@@ -19,7 +19,7 @@ const MovieList: FC<ListProps> = ({ moviesArray, moviesType }) => {
       <StyledMovieList>
         {moviesArray.map((movie) => (
           <Fragment key={movie.id}>
-            <MovieListItem {...movie} movie={movie} />
+            <MovieListItem {...movie} />
           </Fragment>
         ))}
       </StyledMovieList>
