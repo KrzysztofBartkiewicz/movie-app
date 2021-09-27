@@ -1,18 +1,28 @@
-import React, { useContext } from 'react';
+import { FC, useContext } from 'react';
 import RootContext from '../../context';
-import styles from './FavBtn.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { StyledFavBtn } from './StyledFavBtn';
 
-const FavBtn = ({ movie, small }) => {
-  const context = useContext(RootContext);
-  const { favMovies, handleRemoveFromFav, handleAddToFav } = context;
-  const isAddedToFav = favMovies.some((favMovie) => favMovie.id === movie.id);
+import { SingleMovieData } from '../../types';
+
+type FavBtnProps = {
+  movie: SingleMovieData;
+  small: boolean;
+};
+
+const FavBtn: FC<FavBtnProps> = ({ movie, small }) => {
+  const { favMovies, handleRemoveFromFav, handleAddToFav } =
+    useContext(RootContext);
+
+  const isAddedToFav = favMovies.some(
+    (favMovie: SingleMovieData) => favMovie.id === movie.id
+  );
   const handleClick = isAddedToFav ? handleRemoveFromFav : handleAddToFav;
 
   return (
-    <button
-      className={small ? styles.favBtnSmall : styles.favBtnBig}
+    <StyledFavBtn
+      small={small}
       onClick={(event) => {
         event.preventDefault();
         handleClick(movie);
@@ -23,7 +33,7 @@ const FavBtn = ({ movie, small }) => {
         color="#FFF"
         size="lg"
       />
-    </button>
+    </StyledFavBtn>
   );
 };
 
