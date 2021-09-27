@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from 'styled-components';
 import './index.scss';
 import Root from './root/Root';
+import mainTheme from './theme/main';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root />
+    <ThemeProvider theme={mainTheme}>
+      <Root />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
