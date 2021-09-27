@@ -9,7 +9,7 @@ import {
 import { getFavMoviesFromLS } from '../utils/localStorage';
 import { movieTypes } from '../helpers/movieTypes';
 
-import { MovieData } from '../types';
+import { MovieData } from '../interfaces';
 
 const Root = () => {
   const [favMovies, setFavMovies] = useState<MovieData[]>(getFavMoviesFromLS());

@@ -1,22 +1,28 @@
-import React, { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { movieTypes } from '../../helpers/movieTypes';
+import { MovieData } from '../../interfaces';
 import MovieListItem from '../MovieListItem/MovieListItem';
 import MoviePagination from '../MoviePagination/MoviePagination';
-import styles from './MovieList.module.scss';
+import { StyledMovieList } from './StyledMovieList';
 
-const MovieList = ({ moviesArray, moviesType }) => {
+type ListProps = {
+  moviesArray: MovieData[];
+  moviesType: string;
+};
+
+const MovieList: FC<ListProps> = ({ moviesArray, moviesType }) => {
   return (
     <>
       {moviesType !== movieTypes.favorites && (
         <MoviePagination moviesType={moviesType} />
       )}
-      <ul className={styles.list}>
+      <StyledMovieList>
         {moviesArray.map((movie) => (
           <Fragment key={movie.id}>
             <MovieListItem {...movie} movie={movie} />
           </Fragment>
         ))}
-      </ul>
+      </StyledMovieList>
     </>
   );
 };

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { SingleMovieData } from '../types';
 
 export const fetchTopRatedMovies = (pageNumber: number) => {
   return axios
@@ -23,7 +22,7 @@ export const fetchPopulardMovies = (pageNumber: number) => {
     .catch((err) => console.error(err));
 };
 
-export const fetchSingleMovie = (id: number): Promise<SingleMovieData> => {
+export const fetchSingleMovie = (id: number) => {
   return axios
     .get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
@@ -37,7 +36,7 @@ export const fetchSingleMovie = (id: number): Promise<SingleMovieData> => {
 export const fetchCast = (id: number) => {
   return axios
     .get(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     )
     .then((res) => {
       return res.data.cast;

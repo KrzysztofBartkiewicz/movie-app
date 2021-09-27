@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { StyledFavBtn } from './StyledFavBtn';
 
-import { SingleMovieData } from '../../types';
+import { SingleMovieData } from '../../interfaces';
 
 type FavBtnProps = {
   movie: SingleMovieData;
