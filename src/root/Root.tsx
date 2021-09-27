@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import RootContext from '../context';
 import Router from '../routing/Router';
 import {
@@ -9,11 +9,13 @@ import {
 import { getFavMoviesFromLS } from '../utils/localStorage';
 import { movieTypes } from '../helpers/movieTypes';
 
+import { MovieData } from '../types';
+
 const Root = () => {
-  const [favMovies, setFavMovies] = useState(getFavMoviesFromLS());
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [searchedMovies, setSearchedMovies] = useState([]);
+  const [favMovies, setFavMovies] = useState<MovieData[]>(getFavMoviesFromLS());
+  const [popularMovies, setPopularMovies] = useState<MovieData[]>([]);
+  const [topRatedMovies, setTopRatedMovies] = useState<MovieData[]>([]);
+  const [searchedMovies, setSearchedMovies] = useState<MovieData[]>([]);
 
   const [popularTotalPages, setPopularTotalPages] = useState(0);
   const [topRatedTotalPages, setTopRatedTotalPages] = useState(0);
@@ -77,7 +79,7 @@ const Root = () => {
     setSearchedMovies([...fetchedMovies.results]);
   };
 
-  const goToNextPage = (movieType) => {
+  const goToNextPage = (movieType: string) => {
     if (movieType === movieTypes.topRated) {
       setTopRatedMoviesPageNumber((prev) => prev + 1);
     }
@@ -89,7 +91,7 @@ const Root = () => {
     }
   };
 
-  const goToPrevPage = (movieType) => {
+  const goToPrevPage = (movieType: string) => {
     if (movieType === movieTypes.topRated) {
       setTopRatedMoviesPageNumber((prev) => prev - 1);
     }
@@ -101,7 +103,7 @@ const Root = () => {
     }
   };
 
-  const goToPage = (movieType, page) => {
+  const goToPage = (movieType: string, page: number) => {
     if (movieType === movieTypes.topRated) {
       setTopRatedMoviesPageNumber(page);
     }
@@ -113,11 +115,11 @@ const Root = () => {
     }
   };
 
-  const handleAddToFav = (movieToAdd) => {
+  const handleAddToFav = (movieToAdd: MovieData) => {
     setFavMovies((prev) => [...prev, movieToAdd]);
   };
 
-  const handleRemoveFromFav = (movieToRemove) => {
+  const handleRemoveFromFav = (movieToRemove: MovieData) => {
     const filteredFavMovies = favMovies.filter(
       (movie) => movie.id !== movieToRemove.id
     );
