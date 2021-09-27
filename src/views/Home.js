@@ -6,8 +6,7 @@ import RootContext from '../context';
 import { movieTypes } from '../helpers/movieTypes';
 
 const Movies = () => {
-  const context = useContext(RootContext);
-  const { setQuery, searchedMovies } = context;
+  const { handleSetQuery, searchedMovies } = useContext(RootContext);
 
   const [inputValue, setInputValue] = useState('');
 
@@ -17,7 +16,7 @@ const Movies = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQuery(inputValue);
+    handleSetQuery(inputValue);
   };
 
   return (

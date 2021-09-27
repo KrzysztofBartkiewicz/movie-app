@@ -79,6 +79,14 @@ const Root = () => {
     setSearchedMovies([...fetchedMovies.results]);
   };
 
+  const handleSetQuery = (query: string) => {
+    setQuery(query);
+  };
+
+  const toggleMenuVisibility = (value: boolean) => {
+    setIsMenuVisible(value);
+  };
+
   const goToNextPage = (movieType: string) => {
     if (movieType === movieTypes.topRated) {
       setTopRatedMoviesPageNumber((prev) => prev + 1);
@@ -140,8 +148,8 @@ const Root = () => {
         topRatedTotalPages,
         searchedTotalPages,
         isMenuVisible,
-        setIsMenuVisible,
-        setQuery,
+        toggleMenuVisibility,
+        handleSetQuery,
         goToPage,
         handleAddToFav,
         handleRemoveFromFav,

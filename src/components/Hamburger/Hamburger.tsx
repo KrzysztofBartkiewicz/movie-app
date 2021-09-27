@@ -3,10 +3,10 @@ import RootContext from '../../context';
 import { StyledBar, StyledHamburger } from './StyledHamburger';
 
 const Hamburger: FC = () => {
-  const { isMenuVisible, setIsMenuVisible } = useContext(RootContext);
+  const { isMenuVisible, toggleMenuVisibility } = useContext(RootContext);
 
   return (
-    <StyledHamburger onClick={() => setIsMenuVisible((prev: boolean) => !prev)}>
+    <StyledHamburger onClick={() => toggleMenuVisibility(!isMenuVisible)}>
       <StyledBar isMenuVisible={isMenuVisible} />
     </StyledHamburger>
   );

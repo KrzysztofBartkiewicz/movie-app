@@ -48,12 +48,6 @@ export const StyledList = styled.ul<ListProps>`
   background-color: white;
   transition: left 1s;
 
-  ${({ isMenuVisible }) =>
-    isMenuVisible &&
-    css`
-      left: 0;
-    `}
-
   ${({ theme }) => theme.mq.smBp} {
     width: 100vw;
     height: 100vh;
@@ -64,6 +58,12 @@ export const StyledList = styled.ul<ListProps>`
     left: -100%;
     z-index: 50;
   }
+
+  ${({ isMenuVisible }) =>
+    isMenuVisible &&
+    css`
+      left: 0;
+    `}
 
   li {
     position: relative;
