@@ -44,21 +44,19 @@ const MoviePagination: FC<PaginationProps> = ({ moviesType }) => {
     totalPages = searchedTotalPages;
   }
 
-  const pages = new Array(totalPages)
-    .fill(null)
-    .map((page: number, i: number): ReactNode => {
-      page = i + 1;
+  const pagesButtons = new Array(totalPages).fill(null).map((page, i) => {
+    page = i + 1;
 
-      return (
-        <StyledPagenumberButton
-          onClick={() => goToPage(moviesType, page)}
-          key={`page${i + 1}`}
-          activePageNumber={page === pageNumber}
-        >
-          {page}
-        </StyledPagenumberButton>
-      );
-    });
+    return (
+      <StyledPagenumberButton
+        onClick={() => goToPage(moviesType, page)}
+        key={`page${i + 1}`}
+        activePageNumber={page === pageNumber}
+      >
+        {page}
+      </StyledPagenumberButton>
+    );
+  });
 
   return (
     <StyledPaginationWrapper>
@@ -77,9 +75,11 @@ const MoviePagination: FC<PaginationProps> = ({ moviesType }) => {
           <StyledDots>...</StyledDots>
         </>
       )}
-      {pages.filter(
-        (undefined, i: number) => i > pageNumber - 4 && i < pageNumber + 2
+
+      {pagesButtons.filter(
+        (undefined, i) => i > pageNumber - 4 && i < pageNumber + 2
       )}
+
       {pageNumber < totalPages - 2 && (
         <>
           <StyledDots>...</StyledDots>
