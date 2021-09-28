@@ -1,9 +1,8 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { StyledGenreBtn } from './StyledGenreBtn';
 
 type GenreBtnProps = {
-  children: ReactNode;
-  handleClick: () => void;
+  handleClick?: () => void;
 };
 
 const GenreBtn: FC<GenreBtnProps> = ({ children, handleClick }) => {

@@ -18,7 +18,7 @@ export interface MovieData {
 export interface SingleMovieData extends MovieData {
   belongs_to_collection: boolean;
   budget: number;
-  genres: object[];
+  genres: { id: number; name: string }[];
   homepage: string;
   imdb_id: string;
   production_companies: object[];
