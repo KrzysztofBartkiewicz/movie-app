@@ -10,6 +10,8 @@
 ⭐ Sass  
 ⭐ Axios  
 ⭐ RWD  
+⭐ Styled Components  
+⭐ TypeScript
 
 ## How to use
 
@@ -19,4 +21,5 @@
 
 ## About app
 
-It's simple app by the use of which you can browse and search movies. It uses themoviedb.org database for fetching data, has adding to favorites functionality based on local storage and custom pagination. Made in React.
+It's simple app by the use of which you can browse and search movies. It uses themoviedb.org database for fetching data, has adding to favorites functionality based on local storage and custom pagination. Made in React.  
+Application is in the middle of refactoring to typescript, which I am learning currently.
